@@ -68,8 +68,8 @@ int main()
 
 		if (abs(deltamax) < abs(deltacurr)) {
 			deltamax = deltacurr;
-		}
-		Delta_I = i;
+   Delta_I = i;
+	 }		
 	}
 
 	cout << "Norma vektora nevyazki = " << deltamax << endl;
