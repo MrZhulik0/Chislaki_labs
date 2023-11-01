@@ -52,7 +52,7 @@ int main()
 		double s = 0;
 		for (int f = 0; f < column; f++)
 			s += tableCopy[w][f] * solution[f];
-		cout << tableCopy[w][column] - s << endl;
+		cout << s - tableCopy[w][column] << endl;
 	}
 	cout << endl;
 
