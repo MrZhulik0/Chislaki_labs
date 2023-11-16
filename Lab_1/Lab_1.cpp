@@ -56,23 +56,18 @@ int main()
 	}
 	cout << endl;
 
-
-	double deltamax = 0; //Norma vektora nevyazki
-	int Delta_I = 0;
+	double norm = 0; // Norma vectora nevyazki
 	for (int i = 0; i < column; i++) {
-		double deltacurr = table[i][column];
-
-		for (int j = 0; j < column; j++) {
-			deltacurr -= table[i][j] * solution[j];
-		}
-
-		if (abs(deltamax) < abs(deltacurr)) {
-			deltamax = deltacurr;
-   Delta_I = i;
-	 }		
+  	double delta = table[i][column]; 
+  	for (int j = 0; j < column; j++) {
+    	delta -= table[i][j] * solution[j];
+ 	 }
+ 	 if (abs(norm) < abs(delta)) {
+	    norm = delta;
+ 	 }
 	}
 
-	cout << "Norma vektora nevyazki = " << deltamax << endl;
-	cout << "Otnosit. pogreshnost' = " << deltamax / solution[Delta_I] << endl;
+	cout << "Norma vektora nevyazki = " << norm << endl;
+	//cout << "Otnosit. pogreshnost' = " << norm / solution[Delta_I] << endl;
 
 }
