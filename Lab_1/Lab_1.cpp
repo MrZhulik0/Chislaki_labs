@@ -46,28 +46,21 @@ int main()
 	}
 	cout << endl;
 
+	double norma = 0;
 	cout << "Vektor nevyazki: " << endl; //Vektor nevyazki
 	for (int w = 0; w < column; w++)
 	{
 		double s = 0;
 		for (int f = 0; f < column; f++)
 			s += tableCopy[w][f] * solution[f];
+		if (abs(s - tableCopy[w][column]) > norma)
+			norma = s;
 		cout << s - tableCopy[w][column] << endl;
 	}
 	cout << endl;
-
-	double norm = 0; // Norma vectora nevyazki
-	for (int i = 0; i < column; i++) {
-  	double delta = table[i][column]; 
-  	for (int j = 0; j < column; j++) {
-    	delta -= table[i][j] * solution[j];
- 	 }
- 	 if (abs(norm) < abs(delta)) {
-	    norm = delta;
- 	 }
-	}
-
-	cout << "Norma vektora nevyazki = " << norm << endl;
+	
+	
+	cout << "Norma vektora nevyazki = " << norma << endl;
 	//cout << "Otnosit. pogreshnost' = " << norm / solution[Delta_I] << endl;
 
 }
