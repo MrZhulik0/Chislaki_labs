@@ -54,7 +54,7 @@ int main()
 		for (int f = 0; f < column; f++)
 			s += tableCopy[w][f] * solution[f];
 		if (abs(s - tableCopy[w][column]) > norma)
-			norma = s;
+			norma = s - tableCopy[w][column];
 		cout << s - tableCopy[w][column] << endl;
 	}
 	cout << endl;
