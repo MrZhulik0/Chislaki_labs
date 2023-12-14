@@ -14,16 +14,26 @@ double F(double x, double y) {
 }
 
 // Кубаторный метод Симпсона для двумерного интеграла
-double simpson2d(double a, double b, double c, double d){
- double hx = (b - a) / 2;
-	double hy = (d - c) / 2;
-	double integral_Simpsons_cubaturn = 0;
-	integral_Simpsons_cubaturn += F(a , c) + 4 * F(a + hx, c) +	
-		F(b, c ) + 4 * F(a, c + hy) +
-		16 * F(a + hx, c + hy) + 4 * F(b , c + hy) +
-		F(a , d) + 4 * F(a + hx, d) + F(b , d);
-	integral_Simpsons_cubaturn *= (hx * hy) / 9;
-	return integral_Simpsons_cubaturn;
+double simpson2d(double a, double b, double c, double d, int n, int m){
+    const double width_x = (b-a)/(2*n);
+    const double width_y = (d-c)/(2*m);
+    double integral = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            double preintegral = F(a + width_x*2*i, c + width_y*2*j) 
+                  + 4 * F(a + width_x*(2*i+1), c + width_y*(2*j)) 
+                      + F(a + width_x*(2*i+2), c + width_y*(2*j)) 
+                  + 4 * F(a + width_x*(2*i), c + width_y*(j+1))
+                 + 16 * F(a + width_x*(2*i+1), c + width_y*(2*j+1))
+                  + 4 * F(a + width_x*(2*i+2), c + width_y*(2*j+1))
+                      + F(a + width_x*(2*i), c + width_y*(2*j+2))
+                  + 4 * F(a + width_x*(2*i+1), c + width_y*(2*j+2))
+                      + F(a + width_x*(2*i+2), c + width_y*(2*j+2));
+            integral += preintegral;
+        }
+    }
+    integral *= width_x*width_y/9;
+    return integral;
 }
 // Функция, которая вычисляет интеграл методом Симпсона
 double simpson(double a, double b, double eps) {
