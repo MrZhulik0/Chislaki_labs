@@ -38,7 +38,7 @@ void printNumerically(double M){
     while (k <= NIT) {
         vector<vector<double>> J(2, vector<double>(2));
         computeJacobianNumerically(x, y, J, M);
-        vector<double> F = {f1(x, y), f2(x1, x2)};
+        vector<double> F = {f1(x, y), f2(x, y)};
         vector<double> increments(2);
         if(!gauss(J, F, 2, increments))
             break;
