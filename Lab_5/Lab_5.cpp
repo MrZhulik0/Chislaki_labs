@@ -17,7 +17,7 @@ int main() {
     // Выводим результаты на экран
     cout << "Метод Симпсона при eps = " << eps1 << ": " << res1 << endl;
     cout << "Метод Симпсона при eps = " << eps2 << ": " << res2 << endl;
-    cout << "Кубатурный метод Симпсона:" << simpson2d(a1, b1, c1, d1) << endl;
+    cout << "Кубатурный метод Симпсона:" << simpson2d(a1, b1, c1, d1, 10, 10) << endl;
     cout << "Метод трапеций при eps = " << eps1 << ": " << res3 << endl;
     cout << "Метод трапеций при eps = " << eps2 << ": " << res4 << endl;
     return 0;
