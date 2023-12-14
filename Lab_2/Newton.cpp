@@ -42,17 +42,16 @@ void printNumerically(double M){
         vector<double> increments(2);
         if(!gauss(J, F, 2, increments))
             break;
+        double tmpx = x;
+        double tmpy = y;
         x -= increments[0];
         y -= increments[1];
-
         double b1 = max(abs(F[0]), abs(F[1]));
-        double b2;
-        for (int i = 0; i < 2; i++) {
-            if (abs(F[i]) < 1)
-                b2 = max(b2, abs(F[i] - (F[i] - increments[i])));
+        double b2 = 0.0;
+        if (abs(x) < 1)
+                b2 = max(abs(x - tmpx), abs(y - tmpy));
             else
-                b2 = max(b2, abs((F[i] - (F[i] - increments[i])) / F[i]));
-        }
+                b2 = max(abs((x - tmpx) / x), abs((y - tmpy) / y));
         k++;
         cout << k ;
         if(k<10)
@@ -91,16 +90,16 @@ void printAnalytically(){
         vector<double> increments(2);
         if(!gauss(J, F, 2, increments))
             break;
+        double tmpx = x;
+        double tmpy = y;
         x -= increments[0];
         y -= increments[1];
         double b1 = max(abs(F[0]), abs(F[1]));
-        double b2;
-        for (int i = 0; i < 2; i++) {
-            if (abs(F[i]) < 1)
-                b2 = max(b2, abs(F[i] - (F[i] - increments[i])));
+        double b2 = 0.0;
+        if (abs(x) < 1)
+                b2 = max(abs(x - tmpx), abs(y - tmpy));
             else
-                b2 = max(b2, abs((F[i] - (F[i] - increments[i])) / F[i]));
-        } 
+                b2 = max(abs((x - tmpx) / x), abs((y - tmpy) / y));
         cout << k ;
         if(k<10)
             cout<<setw(10);
