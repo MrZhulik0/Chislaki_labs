@@ -21,7 +21,7 @@ void computeJacobianNumerically(double x, double y, vector<vector <double>>& J, 
 
 void computeJacobianAnalytically(double x, double y, vector<vector <double>>& J) {
     J[0][0] = 6*x*x;
-    J[0][1] = 2*y;
+    J[0][1] = - 2*y;
     J[1][0] = y*y*y;
     J[1][1] = 3*x*y*y - 1;
 }
